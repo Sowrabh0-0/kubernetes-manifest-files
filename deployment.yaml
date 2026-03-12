@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sowrabh-deployment
+  namespace: sowrabh-ns
+  labels:
+    app: sowrabh-dp 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ey-cart-web
+  template:
+    metadata:
+      labels:
+        app: ey-cart-web
+    spec:
+      containers:
+        - name: ey-cart-container
+          image: muralisocial123/ey-cart:v1.1.0
+          ports:
+            - containerPort: 3000
